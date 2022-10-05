@@ -1,7 +1,5 @@
 <template>
-  <div>您已经进入插件{{ count + 1 }}次了</div>
-
-  <template-item :data="3"></template-item>
+  <home></home>
 </template>
 
 <style lang="scss" scoped></style>
@@ -9,8 +7,7 @@
 <script setup lang="ts">
 import { useDark } from "@vueuse/core";
 import { onMounted, onUnmounted, ref } from "vue";
-
-import TemplateItem from "./components/template-item.vue";
+import Home from "./pages/home.vue";
 
 useDark();
 

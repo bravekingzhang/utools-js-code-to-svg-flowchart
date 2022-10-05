@@ -1,9 +1,9 @@
 {
-  "name": "author",
-  "pluginName": "pluginName",
-  "description": "plugin description",
+  "name": "brzhang",
+  "pluginName": "utools-js-code-svg-flowchart",
+  "description": "生成js代码的流程图",
   "author": "https://github.com/bravekingzhang",
-  "homepage": "https://github.com/bravekingzhang/your-plugin-name",
+  "homepage": "https://github.com/bravekingzhang/utools-js-code-to-svg-flowchart",
   "version": "1.0.0",
   "logo": "logo.png",
   "main": "index.html",
@@ -14,17 +14,12 @@
   },
   "features": [
     {
-      "code": "plugin",
+      "code": "js-code-svg-flowchart",
       "explain": "description",
       "cmds": [
-        "plugin",
-        "description",
-        {
-          "type": "files",
-          "fileType": "file",
-          "match": "/\\.(png|jpeg|jpg|webp)$/i",
-          "label": "压缩图片"
-        }
+        "flowchart",
+        "chart",
+        "js2flowchart"
       ]
     }
   ]

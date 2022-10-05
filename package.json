@@ -1,10 +1,10 @@
 {
-  "name": "utools-plugin-template",
+  "name": "utools-js-code-svg-flowchart",
   "version": "1.0.0",
-  "description": "utools插件开发模板",
+  "description": "utools生成js代码的流程图",
   "scripts": {
     "start": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "icon": "curl https://at.alicdn.com/t/c/font_1853655_4i93xakt7p5.js > ./src/assets/iconfont.js"
   },
   "author": "brzhang",
@@ -26,6 +26,8 @@
     "axios": "^0.27.2",
     "dayjs": "^1.11.5",
     "element-plus": "^2.2.17",
+    "js2flowchart": "^1.3.3",
+    "monaco-editor": "^0.34.0",
     "vue": "^3.2.39"
   }
 }

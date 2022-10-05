@@ -1,7 +1,7 @@
-// import path from 'path';
-// import fs from 'fs/promises';
+import path from 'path';
+import fs from 'fs/promises';
 
-// const tempPath = path.join(utools.getPath('temp'), 'utools.tinypng');
+const tempPath = path.join(utools.getPath('temp'), 'js_flowchat.svg','');
 
 // 这个方法会自动挂在到window.preload,在vue中可以这么调用 window.preload.handlePluginEnter
 export async function handlePluginEnter({ code, type, payload }: Parameters<Parameters<typeof utools.onPluginEnter>[0]>[0]) {
@@ -10,5 +10,10 @@ export async function handlePluginEnter({ code, type, payload }: Parameters<Para
 }
 
 utools.onPluginEnter(handlePluginEnter);
-  
+
 utools.onPluginOut(async exit => {});
+
+export async function saveFile(content: string){
+  await fs.writeFile(tempPath, content);
+  return tempPath;
+}
