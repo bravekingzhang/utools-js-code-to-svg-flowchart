@@ -2,7 +2,7 @@
 
 ## 如何使用
 
-输入js代码即可看到流程图，左侧是代码编辑器，右侧是流程图，如下图
+输入js代码即可看到流程图，左侧是代码编辑器，右侧是流程图,代码写好，CTRL+S,就可以生成，如下图
 <img src="https://github.com/bravekingzhang/utools-js-code-to-svg-flowchart/blob/main/doc/run.png" alt="效果" style="width: 70%;" />
 
 

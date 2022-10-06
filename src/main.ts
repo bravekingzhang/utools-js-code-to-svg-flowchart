@@ -1,12 +1,14 @@
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn.js';
 import { createApp } from 'vue';
-import { ElNotification } from 'element-plus';
+import { ElNotification  } from 'element-plus';
 
 import 'element-plus/theme-chalk/el-overlay.css';
 import 'element-plus/theme-chalk/dark/css-vars.css';
 import 'element-plus/theme-chalk/el-image.css';
 import 'element-plus/theme-chalk/el-image-viewer.css'
+import "element-plus/theme-chalk/el-message.css";
+import "element-plus/theme-chalk/el-message-box.css";
 import relativeTime from 'dayjs/plugin/relativeTime';
 
 import './style.css';
