@@ -4,7 +4,7 @@
   "description": "utools生成js代码的流程图",
   "scripts": {
     "start": "vite",
-    "build": "vite build",
+    "build": "vue-tsc --noEmit && vite build",
     "icon": "curl https://at.alicdn.com/t/c/font_1853655_4i93xakt7p5.js > ./src/assets/iconfont.js"
   },
   "author": "brzhang",

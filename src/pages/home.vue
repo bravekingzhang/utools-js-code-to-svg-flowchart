@@ -1,17 +1,4 @@
-<template>
-  <div style="height: 100%" class="container">
-    <div ref="editor" class="grid-content"></div>
-    <div class="grid-content">
-      <el-image
-        fit="contain"
-        :src="image"
-        :preview-src-list="previews"
-      ></el-image>
-    </div>
-  </div>
-</template>
-
-<script>
+<script lang="ts">
 import * as monaco from "monaco-editor";
 import editorWorker from "monaco-editor/esm/vs/editor/editor.worker?worker";
 import jsonWorker from "monaco-editor/esm/vs/language/json/json.worker?worker";
@@ -20,7 +7,8 @@ import htmlWorker from "monaco-editor/esm/vs/language/html/html.worker?worker";
 import tsWorker from "monaco-editor/esm/vs/language/typescript/ts.worker?worker";
 import { ElImage } from "element-plus";
 import { convertCodeToSvg } from "js2flowchart";
-export default {
+import { defineComponent } from "vue";
+export default defineComponent({
   data() {
     return {
       image: "",
@@ -54,37 +42,37 @@ export default {
           return new editorWorker();
         },
       };
-      const editor = monaco.editor.create(this.$refs.editor, {
+      const editor = monaco.editor.create(this.$refs.editor as HTMLElement, {
         value: [
           `var quickSort = function(arr) {
 
-　　if (arr.length <= 1) { return arr; }
+    　　if (arr.length <= 1) { return arr; }
 
-　　var pivotIndex = Math.floor(arr.length / 2);
+    　　var pivotIndex = Math.floor(arr.length / 2);
 
-　　var pivot = arr.splice(pivotIndex, 1)[0];
+    　　var pivot = arr.splice(pivotIndex, 1)[0];
 
-　　var left = [];
+    　　var left = [];
 
-　　var right = [];
+    　　var right = [];
 
-　　for (var i = 0; i < arr.length; i++){
+    　　for (var i = 0; i < arr.length; i++){
 
-　　　　if (arr[i] < pivot) {
+    　　　　if (arr[i] < pivot) {
 
-　　　　　　left.push(arr[i]);
+    　　　　　　left.push(arr[i]);
 
-　　　　} else {
+    　　　　} else {
 
-　　　　　　right.push(arr[i]);
+    　　　　　　right.push(arr[i]);
 
-　　　　}
+    　　　　}
 
-　　}
+    　　}
 
-　　return quickSort(left).concat([pivot], quickSort(right));
+    　　return quickSort(left).concat([pivot], quickSort(right));
 
-}; `,
+    }; `,
         ].join("\n"),
         language: "javascript",
         theme: "vs-dark",
@@ -92,16 +80,18 @@ export default {
       });
       var KM = monaco.KeyMod;
       var KC = monaco.KeyCode;
-      editor.addCommand(KM.chord(KM.CtrlCmd | KC.KeyS), async () => {
+      editor.addCommand(KM.chord(KM.CtrlCmd | KC.KeyS, 0), async () => {
         try {
           const code = editor.getValue();
           const svg = convertCodeToSvg(code);
-          const outFilePath = await window.preload.saveFile(svg);
+          const outFilePath = await window.preload?.saveFile(svg);
           //   const flowTree = convertCodeToFlowTree(code);
 
           //   const svgTree = convertFlowTreeToSvg(flowTree);
           //   console.log("svgTree", svgTree);
-          this.image = `file://${outFilePath + "?t=" + Date.parse(new Date())}`;
+          this.image = `file://${
+            outFilePath + "?t=" + new Date().getUTCMilliseconds()
+          }`;
           console.log(outFilePath);
         } catch (e) {
           console.error(e);
@@ -111,8 +101,21 @@ export default {
     });
   },
   methods: {},
-};
+});
 </script>
+<template>
+  <div style="height: 100%" class="container">
+    <div ref="editor" class="grid-content"></div>
+    <div class="grid-content">
+      <el-image
+        fit="contain"
+        :src="image"
+        :preview-src-list="previews"
+      ></el-image>
+    </div>
+  </div>
+</template>
+
 <style>
 .container {
   display: flex;
